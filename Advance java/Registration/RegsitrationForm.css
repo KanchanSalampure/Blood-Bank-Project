@@ -1,0 +1,26 @@
+#body{
+ background-origin: padding-box;   
+ background-image:url("https://www.dacsa.com/wp-content/uploads/2019/06/blood-156063_1280-272x300.png");
+ background-repeat:repeat-y;
+ background-position:right top;
+ background-color:#b0ebb7;
+align-content: center;
+
+}
+a {
+    color: rgb(202, 56, 112);
+  }
+  
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 100%;
+}
+h3{
+    text-align: center;
+}
+.myinput{
+    width: 300px;
+    height: 25px;
+
+}
