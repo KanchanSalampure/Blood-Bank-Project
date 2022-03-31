@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private int user_ID;
 	@Column
 	 private String user_name;
@@ -32,12 +32,16 @@ public class User {
 	private String blood_type;
 	@Column 
 	private String email_ID;
+	@Column
+	private String address;
+	@Column
+	private String contact_no;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public User(String user_name, String password, String user_type, String first_name, String last_name, String gender,
-			String dOB, String blood_type, String email_ID) {
+			String dOB, String blood_type, String email_ID,String address) {
 		super();
 		this.user_name = user_name;
 		this.password = password;
@@ -48,6 +52,13 @@ public class User {
 		DOB = dOB;
 		this.blood_type = blood_type;
 		this.email_ID = email_ID;
+		this.address=address;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public int getUser_ID() {
 		return user_ID;
