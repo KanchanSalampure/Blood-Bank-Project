@@ -23,7 +23,7 @@ public class UserController {
 	public String getbyname(@RequestParam String  name,@RequestParam String pwd) {
 		 User u= serv.getbyname(name,pwd);
 		  boolean flag=false;
-		//  System.out.println(name+pwd);
+		//  System.out.println(name+pwd);s
 		 // System.out.println(u.getUser_name()+u.getPassword());
 		    if(u!=null) {
 			 if(u.getUser_name().equals(name) && u.getPassword().equals(pwd)) { 

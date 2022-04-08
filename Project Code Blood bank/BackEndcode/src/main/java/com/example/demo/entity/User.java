@@ -1,18 +1,25 @@
 package com.example.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Value;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="user")
 public class User {
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private int user_ID;
 	@Column
 	 private String user_name;
@@ -25,9 +32,9 @@ public class User {
 	@Column 
 	private String last_name;
 	@Column 
-	private String Gender;
+	private String gender;
 	@Column 
-	private String DOB;
+	private String dob;
 	@Column
 	private String blood_type;
 	@Column 
@@ -36,24 +43,52 @@ public class User {
 	private String address;
 	@Column
 	private String contact_no;
+	
+	@JsonIgnoreProperties("user")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="BBankid")
+	
+	private BloodBank bbank_id;
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public User(String user_name, String password, String user_type, String first_name, String last_name, String gender,
-			String dOB, String blood_type, String email_ID,String address) {
+			String dob, String blood_type, String email_ID, String address, String contact_no, BloodBank bbank_id) {
 		super();
 		this.user_name = user_name;
 		this.password = password;
 		this.user_type = user_type;
 		this.first_name = first_name;
 		this.last_name = last_name;
-		Gender = gender;
-		DOB = dOB;
+		this.gender = gender;
+		this.dob = dob;
 		this.blood_type = blood_type;
 		this.email_ID = email_ID;
-		this.address=address;
+		this.address = address;
+		this.contact_no = contact_no;
+		this.bbank_id = bbank_id;
 	}
+
+	public String getContact_no() {
+		return contact_no;
+	}
+
+	public void setContact_no(String contact_no) {
+		this.contact_no = contact_no;
+	}
+
+
+	public BloodBank getBbank_id() {
+		return bbank_id;
+	}
+
+	public void setBbank_id(BloodBank bbank_id) {
+		this.bbank_id = bbank_id;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -96,18 +131,23 @@ public class User {
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
+	
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
+
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
-	public String getDOB() {
-		return DOB;
+
+	public String getDob() {
+		return dob;
 	}
-	public void setDOB(String dOB) {
-		DOB = dOB;
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
+
 	public String getBlood_type() {
 		return blood_type;
 	}
@@ -119,12 +159,6 @@ public class User {
 	}
 	public void setEmail_ID(String email_ID) {
 		this.email_ID = email_ID;
-	}
-	@Override
-	public String toString() {
-		return "User [user_ID=" + user_ID + ", user_name=" + user_name + ", password=" + password + ", user_type="
-				+ user_type + ", first_name=" + first_name + ", last_name=" + last_name + ", Gender=" + Gender
-				+ ", DOB=" + DOB + ", blood_type=" + blood_type + ", email_ID=" + email_ID + "]";
 	}
 	
 	
