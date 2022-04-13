@@ -1,0 +1,12 @@
+ul {
+    list-style: none;
+    text-align: left;
+
+ 
+  }
+  
+  ul li:before {
+    content: '✓';
+   padding-right: 30px;
+   
+  }

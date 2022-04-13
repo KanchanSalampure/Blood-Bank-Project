@@ -32,8 +32,7 @@ public class Camps {
 	@OneToMany(mappedBy = "campid",cascade = CascadeType.ALL)
 	private List<BloodBank_Inv> inv;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Donor> donor_id;
+	
 	
 	public Camps() {
 		super();
@@ -46,7 +45,7 @@ public class Camps {
 
 
 	public Camps(String name, String organization, String date, String time, String desciprtion, String address,
-			List<BloodBank_Inv> inv, List<Donor> donor_id) {
+			List<BloodBank_Inv> inv) {
 		super();
 		this.name = name;
 		this.organization = organization;
@@ -55,7 +54,7 @@ public class Camps {
 		this.desciprtion = desciprtion;
 		this.address = address;
 		this.inv = inv;
-		this.donor_id = donor_id;
+		
 	}
 
 
@@ -105,20 +104,10 @@ public class Camps {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-
-
 	public List<BloodBank_Inv> getInv() {
 		return inv;
 	}
-
-
-
-
-
-
-	public void setInv(List<BloodBank_Inv> inv) {
+    public void setInv(List<BloodBank_Inv> inv) {
 		this.inv = inv;
 	}
 
@@ -127,12 +116,6 @@ public class Camps {
 
 
 
-	public List<Donor> getDonor_id() {
-		return donor_id;
-	}
-	public void setDonor_id(List<Donor> donor_id) {
-		this.donor_id = donor_id;
-	}
 	
 
 }

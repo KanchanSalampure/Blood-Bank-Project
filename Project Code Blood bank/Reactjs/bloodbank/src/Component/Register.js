@@ -1,14 +1,8 @@
 import React,{useState} from 'react'
-import "./RegsitrationForm.css"
-
-
-
-
+import "./Regsitartion.css"
+import { Link } from 'react-router-dom';
+import NavBar1 from './NavBar1';
 const Register = () => {
-   
- 
-       
- 
  const [user_name,setUser_name] = useState("");
  const [password, setPassword] = useState("");
  const [ user_type, setUser_type] = useState("");
@@ -49,10 +43,11 @@ const Register = () => {
      .then(resp=> {
        if(resp.status===200){
          alert("user registration successful");
-       
+  
        }
        else{
          alert("user registration  Failed");
+     
          
        }
      });
@@ -65,7 +60,10 @@ const Register = () => {
         
 
   return (
-    <div id="body" className='container -md'>
+    <div>
+      <NavBar1/>
+    <div id="body" className='container'>
+    
    <h3>Registration</h3>
         <form >
           <div className='mb-2 mt-2'>
@@ -144,13 +142,14 @@ const Register = () => {
            <button type='button' className="btn-lg btn-success" onClick={SendData} >Register</button>
            </div>
            <div className=" container signin ">
-         <p>Already have an account? <a href="#">Sign in</a>.</p>
+         <p>Already have an account?.<Link to='/login' className='link'><span style={{color:'green'}}>Login</span></Link></p>
          </div>
          </form>
          {/*<h1>{userRegistration.user_type}</h1>
          <h1>{userRegistration.Gender}</h1>
          <h1>{userRegistration.DOB}</h1>*/}
          
+      </div>
       </div>
   )
 }

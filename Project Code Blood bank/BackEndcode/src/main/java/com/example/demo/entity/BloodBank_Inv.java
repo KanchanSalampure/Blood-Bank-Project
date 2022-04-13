@@ -39,22 +39,20 @@ public class BloodBank_Inv {
 	 @Column
 	 private String type;
 	 
-	 @ManyToMany(mappedBy ="Inv_id",cascade = CascadeType.ALL)
-     private List<Donor> d_id;
-
+	
 	public BloodBank_Inv() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BloodBank_Inv(int quantity_bag, BloodBank bank, String date, Camps campid, String type, List<Donor> d_id) {
+	public BloodBank_Inv(int quantity_bag, BloodBank bank, String date, Camps campid, String type) {
 		super();
 		this.quantity_bag = quantity_bag;
 		this.bank = bank;
 		this.date = date;
 		this.campid = campid;
 		this.type = type;
-		this.d_id = d_id;
+	
 	}
 
 	public int getInventry_id() {
@@ -105,13 +103,7 @@ public class BloodBank_Inv {
 		this.type = type;
 	}
 
-	public List<Donor> getD_id() {
-		return d_id;
-	}
-
-	public void setD_id(List<Donor> d_id) {
-		this.d_id = d_id;
-	}
+	
 
 	
 

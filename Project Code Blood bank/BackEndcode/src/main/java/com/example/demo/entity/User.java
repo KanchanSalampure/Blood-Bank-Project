@@ -1,18 +1,20 @@
 package com.example.demo.entity;
 
+
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 
 @Entity
 @Table(name="user")
@@ -44,20 +46,34 @@ public class User {
 	@Column
 	private String contact_no;
 	
-	@JsonIgnoreProperties("user")
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="BBankid")
+	@OneToMany(mappedBy = "patientuser",cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("patient_u")
+	private List<Patient> patient ;
 	
-	private BloodBank bbank_id;
-	
+	@OneToMany(mappedBy = "donor_id",cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("donor_id")
+	private List<Donor> donor ;
+
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String user_name, String password, String user_type, String first_name, String last_name, String gender,
-			String dob, String blood_type, String email_ID, String address, String contact_no, BloodBank bbank_id) {
+	
+
+	
+
+
+
+
+
+
+	public User(String user_name, String password, String user_type, String first_name, String last_name,
+			String gender, String dob, String blood_type, String email_ID, String address, String contact_no,
+			List<Patient> patient, List<Donor> donor) {
 		super();
+		
 		this.user_name = user_name;
 		this.password = password;
 		this.user_type = user_type;
@@ -69,8 +85,44 @@ public class User {
 		this.email_ID = email_ID;
 		this.address = address;
 		this.contact_no = contact_no;
-		this.bbank_id = bbank_id;
+		this.patient = patient;
+		this.donor = donor;
 	}
+
+
+
+
+
+
+
+
+
+
+	public List<Donor> getDonor() {
+		return donor;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setDonor(List<Donor> donor) {
+		this.donor = donor;
+	}
+
+
+
+
+
+
+
+
+
 
 	public String getContact_no() {
 		return contact_no;
@@ -81,13 +133,6 @@ public class User {
 	}
 
 
-	public BloodBank getBbank_id() {
-		return bbank_id;
-	}
-
-	public void setBbank_id(BloodBank bbank_id) {
-		this.bbank_id = bbank_id;
-	}
 
 	public String getAddress() {
 		return address;
@@ -160,6 +205,25 @@ public class User {
 	public void setEmail_ID(String email_ID) {
 		this.email_ID = email_ID;
 	}
+
+
+
+
+
+
+	public List<Patient> getPatient() {
+		return patient;
+	}
+
+
+
+
+
+
+	public void setPatient(List<Patient> patient) {
+		this.patient = patient;
+	}
+ 
 	
 	
 	

@@ -1,0 +1,32 @@
+
+.Searchinput{
+   padding: 10px;
+   font-size: 17px;
+   border: 1px solid grey;
+   float: left;
+   width: 40%;
+   background: #f1f1f1;
+}
+.mybtn{
+   float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+
+}
+.box{
+margin-top: 150px;
+ margin-left: 35%;
+
+}
+.mytable{
+  
+   margin-left: 40%;
+   margin-top: 20px;
+
+}

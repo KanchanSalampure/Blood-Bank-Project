@@ -1,13 +1,17 @@
 package com.example.demo.entity;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,9 +30,7 @@ public class BloodBank {
     @Column
      private String email;
     
-    @JsonIgnoreProperties("bbank_id")
-    @OneToMany(mappedBy = "bbank_id",cascade = CascadeType.ALL)
-    private List<User> user;
+   
     
     @OneToMany(mappedBy = "bank",cascade = CascadeType.ALL)
     private List<BloodBank_Inv> inventry;
@@ -59,14 +61,13 @@ public void setInventry(List<BloodBank_Inv> inventry) {
 
 
 
-public BloodBank(String name, String address, String contact_no, String email, List<User> user,
-		List<BloodBank_Inv> inventry) {
+public BloodBank(String name, String address, String contact_no, String email,List<BloodBank_Inv> inventry) {
 	super();
 	this.name = name;
 	this.address = address;
 	this.contact_no = contact_no;
 	this.email = email;
-	this.user = user;
+	
 	this.inventry = inventry;
 }
 
@@ -124,14 +125,7 @@ public void setEmail(String email) {
 }
 
 
-public List<User> getUser() {
-	return user;
-}
 
-
-public void setUser(List<User> user) {
-	this.user = user;
-}
 
 
 	
