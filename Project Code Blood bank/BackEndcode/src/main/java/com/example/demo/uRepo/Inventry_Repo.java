@@ -22,4 +22,7 @@ public List<BloodBank_Inv>bloodreq(String type);
 @Query("select inv from BloodBank_Inv inv where type=:type ")
 public BloodBank_Inv gettype(String type);
  
+@Query("UPDATE BloodBank_Inv SET quantity_bag=:q WHERE type=:type")
+public int updateQuantityByType(int q,String name);
+
 }

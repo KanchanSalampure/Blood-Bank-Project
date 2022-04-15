@@ -28,4 +28,8 @@ public class Blood_inventeryService {
 	public BloodBank_Inv getinv(String type) {
 		return repo.gettype(type);
 	}
+	
+	public int update(int q,String s) {
+		return repo.updateQuantityByType(q, s);
+	}
 }

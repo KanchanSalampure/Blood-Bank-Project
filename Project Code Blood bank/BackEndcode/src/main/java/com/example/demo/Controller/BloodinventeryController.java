@@ -43,4 +43,7 @@ public class BloodinventeryController {
     	}
         
     }
+    public int updateinv(@RequestParam("quantity") int q,@RequestParam("type") String type) {
+    	return invetserv.update(q, type);
+    }
 }

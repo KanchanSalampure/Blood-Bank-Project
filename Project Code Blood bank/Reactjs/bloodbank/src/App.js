@@ -17,6 +17,7 @@ import Admin from './Component/Admin';
 import StaffReg from './Component/StaffReg';
 import Camp from './Component/Camp';
 import ForgotPassword from './Component/ForgotPassword';
+import Placeorder from './Component/Placeorder';
 
 
 function App() {
@@ -40,8 +41,8 @@ function App() {
            <Route excat path='/login' element={<Logout/>}/>
            <Route excat path='/staff' element={<StaffReg/>}/>
            <Route excat path='/camp' element={<Camp/>}/>
-           
-         
+           <Route excat path='/placeorder' element={<Placeorder/>}/>
+         <Route exact path='/buyblood' element={<BuyBloodbag/>}/>
             </Routes>
       </BrowserRouter>
 

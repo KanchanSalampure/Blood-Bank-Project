@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
+import { useNavigate } from 'react-router-dom';
+import BuyBloodbag from './BuyBloodbag';
 
 const BloodRequestF = () => {
+    let nav=useNavigate();
 const[error,setError]=useState('');
     const [type, setType] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -17,7 +20,7 @@ useEffect(() => {
        .then(resp=>resp.json())
        .then((dt)=>{
             
-               alert(dt.type);
+             
                setQuantity(dt.quantity_bag);
                setAddress(dt.bank.address);
                setContact_No(dt.bank.contact_no);
@@ -32,14 +35,17 @@ useEffect(() => {
                 setEmail('')
                 setName('')
                 setQuantity('')
-
+                nav("/bloodbag")
 
 
               })
         },[type])
     
 
-
+const bloodbag=()=>{
+    localStorage.setItem("type",type)
+    nav("/buyblood")
+}
 
 
 
@@ -76,11 +82,13 @@ useEffect(() => {
 
                 </table>
 
+<button onClick={bloodbag}>buy</button>
 
 
 
                 <div />
             </div>
+          ,
         </div>
 
     )
