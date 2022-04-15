@@ -45,12 +45,12 @@ const Login = () => {
             console.log(obj.user_type);
                localStorage.setItem("loginadmin",JSON.stringify(obj));
              //  mystore.dispatch({user_type:'LOGGEDIN'})
-             nav('/about');
+             nav('/admin');
            }
            else if(obj.user_type ==='donor'){
                localStorage.setItem("loginfarmer",JSON.stringify(obj));
                //mystore.dispatch({user_type:'LOGGEDIN'})
-              nav('/about');
+              nav('/camp');
            }
            else if(obj.user_type == null)
            {

@@ -17,6 +17,10 @@ public interface UserRepositroy extends JpaRepository<User, Integer> {
 	@Query( "select c from User c where user_name=:name and password=:pwd")
 	public User login(String name, String pwd);
 	
+	
+	@Query("select c from User c where user_type=:type")
+	public List<User> getbytype(String type);
+	
 
 
 }

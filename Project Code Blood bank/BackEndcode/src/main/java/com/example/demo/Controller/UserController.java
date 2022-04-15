@@ -3,6 +3,8 @@ package com.example.demo.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,9 @@ public class UserController {
 
 	@Autowired
 	UserService serv;
+	
+	@Autowired
+	JavaMailSender sender ;
 
 @PostMapping("/login")
 	public  User getbyname(@RequestBody User u) {
@@ -31,6 +36,7 @@ public class UserController {
 	else {
 		return null;
 	}
+	
 	
 	
 	
@@ -60,6 +66,16 @@ public class UserController {
     public String Usave(@RequestBody User u) {
 	if(u!=null) {
 	serv.Saveu(u);
+	/* mailMsg =  new SimpleMailMessage();
+	mailMsg.setFrom("kanchansalampure87@gmail.com");
+	mailMsg.setTo(u.getEmail_ID());
+	mailMsg.setSubject("Registration Mail");
+	
+	if(u.getUser_type().equals("donor"))
+		mailMsg.setText("Congratulations "+u.getFirst_name()+"You have successfully registered as "+u.getUser_type()+"and your token is "+u.getUser_ID());
+	else
+		mailMsg.setText("Congratulation"+u.getFirst_name() +"you are successfully register as"+u.getUser_type());
+	sender.send(mailMsg);*/
 	return "OK";
 	}else
 		return "failes";
@@ -69,8 +85,14 @@ public List<User> getall () {
 	return serv.getall();
 }
    
-@GetMapping("getbyid")
+@GetMapping("/getbyid")
 public User getbyid(@RequestParam int id) {
 	return serv.getid(id);
+}
+
+@GetMapping("/findrole")
+public List<User> getrole(@RequestParam("type") String type){
+	
+	return serv.getByType(type);
 }
 }

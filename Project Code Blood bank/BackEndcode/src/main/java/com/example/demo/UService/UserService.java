@@ -33,6 +33,9 @@ public class UserService {
 		return repo.getById(id1);
 		
 	}
+	public List<User> getByType(String t){
+		return repo.getbytype(t);
+	}
 
 	
 }
